@@ -52,8 +52,8 @@ export default function JournalistsPage() {
                   <div className="flex items-center gap-3 mt-2">
                     <span className="text-[10px] px-2 py-0.5 bg-blue-50 text-blue-700 rounded-full">{j.beat}</span>
                     <span className="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full">{j.subBeat}</span>
-                    <span className="flex items-center gap-1 text-xs text-cdc-muted"><MapPin className="w-3 h-3" />{j.geo}</span>
-                    <span className="flex items-center gap-1 text-xs text-cdc-muted"><Globe className="w-3 h-3" />{j.language}</span>
+                    <span className="hidden sm:flex items-center gap-1 text-xs text-cdc-muted"><MapPin className="w-3 h-3" />{j.geo}</span>
+                    <span className="hidden sm:flex items-center gap-1 text-xs text-cdc-muted"><Globe className="w-3 h-3" />{j.language}</span>
                   </div>
                 </div>
                 <div className="text-right">

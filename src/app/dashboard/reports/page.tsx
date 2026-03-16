@@ -59,14 +59,14 @@ export default function ReportsPage() {
               </select>
             </div>
           </div>
-          <div className="flex gap-3">
-            <button className="flex items-center gap-2 px-4 py-2 bg-cdc-blue text-white rounded-lg text-sm hover:bg-cdc-dark transition-colors">
+          <div className="flex flex-wrap gap-3">
+            <button className="flex items-center gap-2 px-4 py-2 bg-cdc-blue text-white rounded-lg text-sm hover:bg-cdc-dark transition-colors min-h-[44px]">
               <ClipboardList className="w-4 h-4" /> Generate Report
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 border border-cdc-border rounded-lg text-sm hover:bg-cdc-gray transition-colors">
+            <button className="flex items-center gap-2 px-4 py-2 border border-cdc-border rounded-lg text-sm hover:bg-cdc-gray transition-colors min-h-[44px]">
               <Download className="w-4 h-4" /> Export as PDF
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 border border-cdc-border rounded-lg text-sm hover:bg-cdc-gray transition-colors">
+            <button className="flex items-center gap-2 px-4 py-2 border border-cdc-border rounded-lg text-sm hover:bg-cdc-gray transition-colors min-h-[44px]">
               <Download className="w-4 h-4" /> Export as CSV
             </button>
           </div>
@@ -77,7 +77,8 @@ export default function ReportsPage() {
         <div className="px-5 py-3 border-b border-cdc-border">
           <h3 className="text-sm font-semibold text-cdc-text">Recent Reports</h3>
         </div>
-        <table className="w-full">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[600px]">
           <thead>
             <tr className="bg-cdc-gray text-left">
               <th className="px-5 py-2.5 text-xs font-medium text-cdc-muted">Report Name</th>
@@ -94,11 +95,12 @@ export default function ReportsPage() {
                 <td className="px-5 py-3 text-xs"><span className="px-2 py-0.5 bg-blue-50 text-blue-700 rounded-full">{r.type}</span></td>
                 <td className="px-5 py-3 text-sm text-cdc-muted">{r.created}</td>
                 <td className="px-5 py-3 text-sm text-cdc-muted">{r.pages}</td>
-                <td className="px-5 py-3"><button className="text-xs text-cdc-blue hover:underline">Download</button></td>
+                <td className="px-5 py-3"><button className="text-xs text-cdc-blue hover:underline min-h-[44px]">Download</button></td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   )

@@ -59,7 +59,8 @@ export default function MediaListsPage() {
                   </button>
                 </div>
               </div>
-              <table className="w-full">
+              <div className="overflow-x-auto">
+              <table className="w-full min-w-[500px]">
                 <thead>
                   <tr className="bg-cdc-gray text-left">
                     <th className="px-5 py-2.5 text-xs font-medium text-cdc-muted">Name</th>
@@ -79,6 +80,7 @@ export default function MediaListsPage() {
                   ))}
                 </tbody>
               </table>
+              </div>
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center h-64 text-cdc-muted">

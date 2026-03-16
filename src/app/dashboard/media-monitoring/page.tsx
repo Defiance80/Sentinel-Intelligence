@@ -17,13 +17,13 @@ export default function MediaMonitoringPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-cdc-text">Media Monitoring</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-cdc-text">Media Monitoring</h1>
           <p className="text-sm text-cdc-muted mt-1">Real-time media coverage tracking across global sources</p>
         </div>
         <div className="flex gap-2">
-          <button className="flex items-center gap-2 px-4 py-2 bg-cdc-blue text-white rounded-lg text-sm hover:bg-cdc-dark transition-colors">
+          <button className="flex items-center gap-2 px-4 py-2 bg-cdc-blue text-white rounded-lg text-sm hover:bg-cdc-dark transition-colors min-h-[44px]">
             <Save className="w-4 h-4" /> Save Search
           </button>
         </div>

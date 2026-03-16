@@ -127,7 +127,8 @@ export default function BroadcastPage() {
         <div className="px-5 py-3 border-b border-cdc-border">
           <h3 className="text-sm font-semibold text-cdc-text">Recent Broadcast Mentions</h3>
         </div>
-        <table className="w-full">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[600px]">
           <thead>
             <tr className="bg-cdc-gray text-left">
               <th className="px-5 py-2.5 text-xs font-medium text-cdc-muted">Station</th>
@@ -149,6 +150,7 @@ export default function BroadcastPage() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   )

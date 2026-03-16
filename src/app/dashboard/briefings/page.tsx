@@ -33,7 +33,7 @@ export default function BriefingsPage() {
 
         {/* Briefing content */}
         <div className="lg:col-span-3 bg-white rounded-xl border border-cdc-border">
-          <div className="px-6 py-4 border-b border-cdc-border flex items-center justify-between">
+          <div className="px-4 sm:px-6 py-4 border-b border-cdc-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <h2 className="text-lg font-bold text-cdc-text">{selectedBriefing.title}</h2>
               <div className="flex items-center gap-3 mt-1">
@@ -41,14 +41,14 @@ export default function BriefingsPage() {
                 <span className="text-xs text-cdc-muted">{selectedBriefing.stories.length} stories curated</span>
               </div>
             </div>
-            <div className="flex gap-2">
-              <button className="flex items-center gap-1 px-3 py-1.5 border border-cdc-border rounded-lg text-xs hover:bg-cdc-gray transition-colors">
+            <div className="flex flex-wrap gap-2">
+              <button className="flex items-center gap-1 px-3 py-1.5 border border-cdc-border rounded-lg text-xs hover:bg-cdc-gray transition-colors min-h-[44px]">
                 <Edit className="w-3 h-3" /> Edit
               </button>
-              <button className="flex items-center gap-1 px-3 py-1.5 border border-cdc-border rounded-lg text-xs hover:bg-cdc-gray transition-colors">
+              <button className="flex items-center gap-1 px-3 py-1.5 border border-cdc-border rounded-lg text-xs hover:bg-cdc-gray transition-colors min-h-[44px]">
                 <Download className="w-3 h-3" /> Export PDF
               </button>
-              <button className="flex items-center gap-1 px-3 py-1.5 bg-cdc-blue text-white rounded-lg text-xs hover:bg-cdc-dark transition-colors">
+              <button className="flex items-center gap-1 px-3 py-1.5 bg-cdc-blue text-white rounded-lg text-xs hover:bg-cdc-dark transition-colors min-h-[44px]">
                 Generate Report
               </button>
             </div>

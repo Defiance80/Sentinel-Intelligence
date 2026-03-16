@@ -12,7 +12,7 @@ export default function DistributionPage() {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
         {[
           { label: 'Total Sent', value: '1,033', icon: Send, color: 'text-cdc-blue' },
           { label: 'Total Opened', value: '808', icon: Eye, color: 'text-cdc-light' },
@@ -48,7 +48,8 @@ export default function DistributionPage() {
         <div className="px-5 py-3 border-b border-cdc-border">
           <h3 className="text-sm font-semibold text-cdc-text flex items-center gap-2"><FileText className="w-4 h-4 text-cdc-blue" /> Recent Press Releases</h3>
         </div>
-        <table className="w-full">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[700px]">
           <thead>
             <tr className="bg-cdc-gray text-left">
               <th className="px-5 py-2.5 text-xs font-medium text-cdc-muted">Release</th>
@@ -72,6 +73,7 @@ export default function DistributionPage() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   )
