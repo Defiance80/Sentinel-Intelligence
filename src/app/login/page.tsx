@@ -77,6 +77,12 @@ export default function LoginPage() {
         <p className="text-center text-xs text-cdc-muted mt-6">
           Conceptual prototype illustrating system capabilities and interface design.
         </p>
+        <p className="text-center text-xs mt-2">
+          <span className="text-cdc-muted">Developed by </span>
+          <a href="https://gokoncentrate.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-cdc-blue hover:underline">
+            GoKoncentrate
+          </a>
+        </p>
       </div>
     </div>
   )

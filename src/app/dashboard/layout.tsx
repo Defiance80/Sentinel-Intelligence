@@ -100,6 +100,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <p className="text-xs text-cdc-muted text-center">
               Conceptual prototype illustrating system capabilities and interface design.
             </p>
+            <p className="text-xs text-center mt-2">
+              <span className="text-cdc-muted">Developed by </span>
+              <a href="https://gokoncentrate.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-cdc-blue hover:underline">
+                GoKoncentrate
+              </a>
+            </p>
           </footer>
         </main>
       </div>
