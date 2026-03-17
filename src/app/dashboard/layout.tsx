@@ -58,17 +58,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* Sidebar */}
       <aside className={`
-        fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-cdc-border flex flex-col transition-transform duration-200
+        fixed inset-y-0 left-0 z-50 bg-white border-r border-cdc-border flex flex-col transition-all duration-200
         lg:static lg:translate-x-0 lg:shrink-0
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-        ${!sidebarOpen && 'lg:w-16 lg:translate-x-0'}
+        ${sidebarOpen ? 'translate-x-0 w-64' : '-translate-x-full w-64 lg:w-[68px] lg:translate-x-0'}
       `}>
-        <div className="p-4 border-b border-cdc-border flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
+        <div className={`p-4 border-b border-cdc-border flex items-center gap-3 ${!sidebarOpen ? 'lg:justify-center lg:px-2' : 'justify-between'}`}>
+          <div className={`flex items-center gap-3 ${!sidebarOpen ? 'lg:justify-center' : ''}`}>
             <div className="w-8 h-8 bg-cdc-blue rounded-lg flex items-center justify-center shrink-0">
               <Shield className="w-4 h-4 text-white" />
             </div>
-            <div>
+            <div className={`${!sidebarOpen ? 'lg:hidden' : ''}`}>
               <p className="text-sm font-bold text-cdc-blue leading-tight">CDC Sentinel</p>
               <p className="text-[10px] text-cdc-muted">Media Intelligence</p>
             </div>
@@ -80,7 +79,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <X className="w-5 h-5" />
           </button>
         </div>
-        <nav className="flex-1 p-2 space-y-0.5 overflow-y-auto">
+        <nav className={`flex-1 p-2 space-y-0.5 overflow-y-auto ${!sidebarOpen ? 'lg:px-1.5' : ''}`}>
           {navItems.map((item) => {
             const isActive = pathname === item.href
             const Icon = item.icon
@@ -92,12 +91,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 onClick={() => {
                   if (window.innerWidth < 1024) useAppStore.setState({ sidebarOpen: false })
                 }}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors min-h-[44px] ${
+                title={!sidebarOpen ? item.label : undefined}
+                className={`flex items-center gap-3 rounded-lg text-sm transition-colors min-h-[44px] ${
+                  !sidebarOpen ? 'lg:justify-center lg:px-0 lg:gap-0 px-3 py-2.5' : 'px-3 py-2.5'
+                } ${
                   isActive ? 'bg-cdc-blue text-white' : isEmergency && emergencyMode ? 'bg-red-50 text-cdc-red hover:bg-red-100' : 'text-cdc-muted hover:bg-cdc-gray hover:text-cdc-text'
                 }`}
               >
                 <Icon className="w-4 h-4 shrink-0" />
-                <span>{item.label}</span>
+                <span className={`${!sidebarOpen ? 'lg:hidden' : ''}`}>{item.label}</span>
               </Link>
             )
           })}
