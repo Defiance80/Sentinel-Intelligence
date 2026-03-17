@@ -1,7 +1,7 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useAppStore } from '@/lib/store'
 import {
   LayoutDashboard, Radio, Tv, Users, List, Send, FileText, BarChart3,
@@ -25,7 +25,21 @@ const navItems = [
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
+  const router = useRouter()
   const { user, sidebarOpen, toggleSidebar, emergencyMode } = useAppStore()
+  const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const userMenuRef = useRef<HTMLDivElement>(null)
+
+  // Close user menu on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
+        setUserMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
 
   // Close sidebar on route change (mobile)
   useEffect(() => {
@@ -131,9 +145,33 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <Bell className="w-5 h-5" />
               <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-cdc-red text-white text-[10px] rounded-full flex items-center justify-center">3</span>
             </button>
-            <div className="flex items-center gap-2 pl-2 sm:pl-3 border-l border-cdc-border">
-              <div className="w-8 h-8 bg-cdc-blue rounded-full flex items-center justify-center text-white text-xs font-medium">SC</div>
-              <span className="text-sm text-cdc-text hidden md:inline">{user?.name || 'User'}</span>
+            <div className="relative" ref={userMenuRef}>
+              <button
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                className="flex items-center gap-2 pl-2 sm:pl-3 border-l border-cdc-border min-h-[44px] cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                <div className="w-8 h-8 bg-cdc-blue rounded-full flex items-center justify-center text-white text-xs font-medium">SC</div>
+                <span className="text-sm text-cdc-text hidden md:inline">{user?.name || 'User'}</span>
+              </button>
+              {userMenuOpen && (
+                <div className="absolute right-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-cdc-border py-1 z-50">
+                  <div className="px-4 py-2 border-b border-cdc-border">
+                    <p className="text-sm font-medium text-cdc-text">{user?.name || 'User'}</p>
+                    <p className="text-xs text-cdc-muted">{user?.email || 'demo@cdc.gov'}</p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setUserMenuOpen(false)
+                      useAppStore.setState({ user: null })
+                      router.push('/login')
+                    }}
+                    className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-cdc-red hover:bg-red-50 transition-colors min-h-[44px]"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Sign Out
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </header>
